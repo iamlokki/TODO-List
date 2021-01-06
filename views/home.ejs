@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%></title>
+    <script src="https://kit.fontawesome.com/6707d4cd63.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="\CSS\home.css">
+</head>
+<body>
+    <div>
+    <h2>ToDo App</h2>
+    <div id="form">
+       <form action="/create-todo-list" method="POST">
+        <div>
+            <p>DESCRIPTION</p>
+            <input type="text" name="Description" placeholder="what do you need to say?">
+        </div>
+        <div>
+            <p>CATEGORY</p>
+            <select name="category">
+                <option >Choose a Category</option>
+                <option value="personal">Personal</option>
+                <option value="work">Work</option>
+                <option value="school">School</option>
+                <option value="cleaning">Cleaning</option>
+                <option value="others">Others</option>
+            </select>
+        </div>
+        <div>
+            <p>DATE</p>
+            <input type="date" name="date">
+        </div>
+        <div>
+            <button type="submit"><i class="fas-fa-plus"></i> ADD TASK</button>
+        </div>
+        </form> 
+
+        <div>
+            <ul>
+                <% for (let i of todo_List){%>
+                    <li><div>
+                        <p><%=i.description%></p>
+                        <i class="fas-fa-calendar-alt"></i>
+                        <p><%= i.date%></p>
+                    </div>
+                    <div>
+                        <p><%= i.category%></p>
+                    </div>
+                    <div class="delete-button">
+                        <a href="delete-todo/<%= i._id%>">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </div></li>
+                    <%}%>
+            </ul>
+        </div>
+    </div>
+    </div>
+    
+</body>
+</html>
