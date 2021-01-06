@@ -11,7 +11,7 @@ const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname,'views'));
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:true}));
 app.use(express.static('assets'));
 
 // controller
@@ -36,7 +36,7 @@ app.post('/create-todo-list', function(req,res){
     // mongodb database
 
     Todo.create({
-        decription: req.body.decription,
+        description: req.body.Description,
         date: req.body.date,
         category: req.body.category
     }, function(err, newTodo){
@@ -56,7 +56,7 @@ app.post('/create-todo-list', function(req,res){
 app.get('/delete-todo/:id', function(req,res){
     console.log(req.params);
     let id= req.params.id;
-    Contact.findByIdAndDelete(id, function(err){
+    Todo.findByIdAndDelete(id, function(err){
         if (err){
             console.log('error deleting todo list entries from database');
             return;

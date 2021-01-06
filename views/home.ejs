@@ -1,62 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title%></title>
+    <title>
+        <%= title%>
+    </title>
     <script src="https://kit.fontawesome.com/6707d4cd63.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="\CSS\home.css">
 </head>
-<body>
-    <div>
-    <h2>ToDo App</h2>
-    <div id="form">
-       <form action="/create-todo-list" method="POST">
-        <div>
-            <p>DESCRIPTION</p>
-            <input type="text" name="Description" placeholder="what do you need to say?">
-        </div>
-        <div>
-            <p>CATEGORY</p>
-            <select name="category">
-                <option >Choose a Category</option>
-                <option value="personal">Personal</option>
-                <option value="work">Work</option>
-                <option value="school">School</option>
-                <option value="cleaning">Cleaning</option>
-                <option value="others">Others</option>
-            </select>
-        </div>
-        <div>
-            <p>DATE</p>
-            <input type="date" name="date">
-        </div>
-        <div>
-            <button type="submit"><i class="fas-fa-plus"></i> ADD TASK</button>
-        </div>
-        </form> 
 
-        <div>
+<body>
+    <div id="main" class="flex-center">
+        <h1>ToDo App</h1>
+        <div id="form" class="flex-center">
+            <form action="/create-todo-list" method="POST" class="flex-center">
+                <div id="description">
+                    <p>DESCRIPTION</p>
+                    <input type="text" name="Description" placeholder="what do you need to say?">
+                </div>
+                <div id="category">
+                    <p>CATEGORY</p>
+                    <select name="category">
+                        <option>Choose a Category</option>
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="school">School</option>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+                <div id="date">
+                    <p>DATE</p>
+                    <input type="date" name="date">
+                </div>
+                <div id="button">
+                    <button type="submit"><i class="fas-fa-plus"></i> ADD TASK</button>
+                    <a href="http://"><div id="del-btn">Delete</div></a>
+                </div>
+            </form>
+        </div>
+
+        <div id="list-items" class="flex-center">
             <ul>
                 <% for (let i of todo_List){%>
-                    <li><div>
-                        <p><%=i.description%></p>
-                        <i class="fas-fa-calendar-alt"></i>
-                        <p><%= i.date%></p>
-                    </div>
-                    <div>
-                        <p><%= i.category%></p>
-                    </div>
-                    <div class="delete-button">
-                        <a href="delete-todo/<%= i._id%>">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    </div></li>
+                    <li class="flex-center">
+                        <input type="checkbox" onclick="toggleFunction(<%=i._id%>)" class="checkbox">
+                        <div class="list-item-1">
+                            <p class="description-text">
+                                <%=i.description%>
+                            </p>
+                            <i class="fas-fa-calendar-alt"></i>
+                            <p>
+                                <%= i.date%>
+                            </p>
+                        </div>
+                        <div class="list-item-2">
+                            <p class="category-text" class="flex-center">
+                                <%= i.category%>
+                            </p>
+                        </div>
+                        <div class="delete-button">
+                            <a href="delete-todo/<%= i._id%>">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </div>
+                    </li>
                     <%}%>
             </ul>
         </div>
     </div>
-    </div>
-    
+
+    <script src="/assets/JS/home.js"></script>
 </body>
+
 </html>
