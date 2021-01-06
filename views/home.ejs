@@ -14,6 +14,9 @@
 <body>
     <div id="main" class="flex-center">
         <h1>ToDo App</h1>
+
+<!-- etting data from user -->
+
         <div id="form" class="flex-center">
             <form action="/create-todo-list" method="POST" class="flex-center">
                 <div id="description">
@@ -23,7 +26,7 @@
                 <div id="category">
                     <p>CATEGORY</p>
                     <select name="category">
-                        <option>Choose a Category</option>
+                        <option value="">Choose a Category</option>
                         <option value="personal">Personal</option>
                         <option value="work">Work</option>
                         <option value="school">School</option>
@@ -36,33 +39,36 @@
                     <input type="date" name="date">
                 </div>
                 <div id="button">
-                    <button type="submit"><i class="fas-fa-plus"></i> ADD TASK</button>
-                    <a href="http://"><div id="del-btn">Delete</div></a>
+                    <button type="submit"><i class="fas fa-plus"></i> ADD TASK</button>
+                    <div id="del-btn"><a onclick="deleteFunction()"><i class="fas fa-trash-alt"></i></a></div>
                 </div>
             </form>
         </div>
+
+
+<!-- delete and print all tasks -->
 
         <div id="list-items" class="flex-center">
             <ul>
                 <% for (let i of todo_List){%>
                     <li class="flex-center">
-                        <input type="checkbox" onclick="toggleFunction(<%=i._id%>)" class="checkbox">
-                        <div class="list-item-1">
+                        <input type="checkbox" onclick="toggleFunction('<%=i._id%>')" class="checkbox">
+                        <div class="list-item-1 flex-center">
                             <p class="description-text">
                                 <%=i.description%>
                             </p>
-                            <i class="fas-fa-calendar-alt"></i>
-                            <p>
+                            <i class="fas fa-calendar-alt"></i>
+                            <p class="list-date">
                                 <%= i.date%>
                             </p>
                         </div>
-                        <div class="list-item-2">
+                        <div id="list-item-2">
                             <p class="category-text" class="flex-center">
                                 <%= i.category%>
                             </p>
                         </div>
                         <div class="delete-button">
-                            <a href="delete-todo/<%= i._id%>">
+                            <a href="delete-todo/<%= i._id%> " id="delete-btn">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </div>
@@ -72,7 +78,7 @@
         </div>
     </div>
 
-    <script src="/assets/JS/home.js"></script>
+    <script src="\JS\home.js"></script>
 </body>
 
 </html>

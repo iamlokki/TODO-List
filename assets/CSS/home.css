@@ -104,18 +104,31 @@ form{
     border-bottom: 2px solid rgb(201, 201, 201);
 }
 
+ /* buttons */
+
 button{
     height: 50%;
-    width: 10%;
+    width: 15%;
     background-color: rgb(46, 45, 45);
     color: white;
+    border-radius: 10%
 }
+
+/* custumise delete button  */
 
 #del-btn{
     height: 50%;
-    width: 20%;
-    background-color: red;
+    width: 8%;
+    background-color: rgb(233, 36, 36);
     color: white;
+    margin-left: 10px;
+    border-radius: 10%
+}
+
+#del-btn i{
+    font-size: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 
 i{
@@ -136,21 +149,46 @@ p{
 
 li{
     list-style-type: none;
-    width: 60vw;
+    width: 56vw;
     flex-direction: row;
+    border-bottom: 2px solid rgb(201, 201, 201);
+
 }
 
 .list-item-1{
     width: 70%;
+    height: 10vh;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.list-item-1 i{
+    color: rgb(112, 112, 112);
+    width: 5%;
+    margin-top: -4%;
+    height: 3vh;
+    /* display: inline-block; */
 }
 
 .description-text{
     font-size: 24px;
     color: grey;
+    width: 100%;
+    height: 6vh;
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
 
-.list-item-2{
+.list-date{
+    width: 30%;
+    margin-top: 0%;
+    height: 3vh;
+    
+}
+
+#list-item-2{
     width: 15%;
+    height: 7vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -160,4 +198,15 @@ li{
 .category-text{
     font-size: 20px;
     color: white;
+}
+
+#delete-button{
+    width: 15%;
+}
+
+#delete-btn i{
+    color: red;
+    font-size: 25px;
+    margin-right: 30px;
+    margin-left: 10px;
 }

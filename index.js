@@ -67,6 +67,22 @@ app.get('/delete-todo/:id', function(req,res){
     
 });
 
+app.get('/delete-todo/', function(req,res){
+    let ids = req.query;
+    console.log(ids)
+    for(let i=0; i<ids.length; i++){
+        Todo.findOneAndDelete(ids[i], function(err){
+            if (err){
+                console.log('error deleting todo list entries from database');
+                return;
+            }
+
+            return console.log(ids[i], "deleted sucessfully");
+        });
+    };
+    return res.redirect('back')
+});
+
 // starting up server
 app.listen(port, function(err){
     if(err){
