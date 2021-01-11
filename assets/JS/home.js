@@ -27,27 +27,35 @@ function deleteFunction(){
 
 // changeing category color 
 
-var category = document.getElementsByClassName("category-text").innertext;
+var category = document.getElementsByClassName("category-text");
 console.log(category);
 
-for(i in category){
-    if(i.innertext == "personal"){
-        document.getElementById('list-item-2').style.backgroundColor = "orange";
+for(let i of category){
+    let p_id = i.getAttribute('id');
+    
+    let div_id = p_id.split('-')[0];
+    
+    div_id += '-div';
+    console.log(div_id);
+    console.log(i.innerText);
+
+    if(i.innerText === "personal"){
+        document.getElementById(`${div_id}`).style.backgroundColor = "#fab73c";
     }
 
-    else if(i.innertext == "work"){
-        document.getElementById('list-item-2').style.backgroundColor = "purple";
+    else if(i.innerText === "work"){
+        document.getElementById(`${div_id}`).style.backgroundColor = "#783778";
     }
 
-    else if(i.innertext == "school"){
-        document.getElementById('list-item-2').style.backgroundColor = "lightgreen";
+    else if(i.innerText === "school"){
+        document.getElementById(`${div_id}`).style.backgroundColor = "lightgreen";
     }
 
-    else if(i.innertext == "cleaning"){
-        document.getElementById('list-item-2').style.backgroundColor = "lime";
+    else if(i.innerText === "cleaning"){
+        document.getElementById(`${div_id}`).style.backgroundColor = "#2ea72e";
     }
 
     else{
-        document.getElementById('list-item-2').style.backgroundColor = "white";
+        document.getElementById(`${div_id}`).style.backgroundColor = "white";
     }
    }
